@@ -33,6 +33,23 @@
                 </div>
             @enderror
         </div>
+
+        <div class="mb-3">
+            <label for="type" class="form-label">Type</label>
+            <select class="form-select" aria-label="Type" id="type" name="type_id">
+                @foreach ($types as $type)
+                    <option value="{{ $type->id }}"
+                         @if (old('tpe_id',$project->type->id) == $type->id) selected     
+                    @endif>{{ $type->name }}</option>
+                @endforeach
+            </select>
+            
+            @error('type')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
+        </div>
        
         <div class="mb-3">
             <label for="category" class="form-label">Category</label>

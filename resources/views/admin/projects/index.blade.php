@@ -18,6 +18,7 @@
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Title</th>
+                <th scope="col">Type</th>
                 <th scope="col">Category</th>
                 <th scope="col">Image url</th>
                 <th scope="col">Actions</th>
@@ -28,6 +29,7 @@
                 <tr>
                     <th scope="row">{{ $project->id }}</th>
                     <td>{{ $project->title }}</td>
+                    <td>{{ $project->type->name }}</td>
                     <td>{{ $project->category->name }}</td>
                     <td>{{ $project->url_image }}</td>
                     <td>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Type;
 use App\Models\Project;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -11,6 +12,7 @@ class ProjectController extends Controller
 {
     private $validations = [
         'title'     => 'required|string|min:5|max:100',
+        'type_id' => 'required|integer|exists:types,id',
         'category_id' => 'required|integer|exists:categories,id',
         'url_image' => 'required|url|max:200',
         'content'   => 'required|string',
@@ -43,7 +45,8 @@ class ProjectController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('admin.projects.create', compact('categories'));
+        $types = Type::all();
+        return view('admin.projects.create', compact('categories', 'types'));
     }
 
     /**
@@ -61,7 +64,8 @@ class ProjectController extends Controller
 
         //salvare i dati nel db se validi
         $newProject = new Project();
-        $newProject->title =         $data['title'];
+        $newProject->title         = $data['title'];
+        $newProject->type_id       = $data['type_id'];
         $newProject->category_id =   $data['category_id'];
         $newProject->url_image =     $data['url_image'];
         $newProject->content =       $data['content'];
@@ -91,7 +95,8 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $categories = Category::all();
-        return view('admin.projects.edit', compact('project', 'categories'));
+        $types = Type::all();
+        return view('admin.projects.edit', compact('project', 'categories', 'types'));
     }
 
     /**

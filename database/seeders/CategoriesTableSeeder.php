@@ -17,6 +17,10 @@ class CategoriesTableSeeder extends Seeder
     {
        $categories = [
         [
+            'name'  => 'Undefined',
+            'description' =>'Lorem picsum',
+        ],
+        [
             'name'        => 'Politica',
         'description' => 'Lorem picsum',
         ],

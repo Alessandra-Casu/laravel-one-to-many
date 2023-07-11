@@ -34,8 +34,27 @@
         </div>
 
         <div class="mb-3">
+            <label for="category" class="form-label">Type</label>
+            <select 
+                class="form-control @error('type') is-invalid @enderror"  id="type" name="type_id">
+                @foreach ($types as $type)
+                    <option value="{{ $type->id }}">{{ $type->name }}</option>
+                @endforeach
+            </select>
+            
+            @error('type_id')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
             <label for="category" class="form-label">Category</label>
-            <select class="form-select"  id="category" name="category_id">
+            <select 
+            class="form-control   @error('category') is-invalid @enderror"
+            id="category" 
+            name="category_id">
                 @foreach ($categories as $category)
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
