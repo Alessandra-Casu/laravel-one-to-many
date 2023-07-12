@@ -36,10 +36,10 @@
 
         <div class="mb-3">
             <label for="type" class="form-label">Type</label>
-            <select class="form-select" aria-label="Type" id="type" name="type_id">
+            <select class="form-select" id="type" name="type_id">
                 @foreach ($types as $type)
                     <option value="{{ $type->id }}"
-                         @if (old('tpe_id',$project->type->id) == $type->id) selected     
+                         @if (old('tpe_id', $project->type->id) == $type->id) selected     
                     @endif>{{ $type->name }}</option>
                 @endforeach
             </select>
@@ -53,7 +53,7 @@
        
         <div class="mb-3">
             <label for="category" class="form-label">Category</label>
-            <select class="form-select" aria-label="Category" id="category" name="category_id">
+            <select class="form-select"id="category" name="category_id">
                 @foreach ($categories as $category)
                     <option value="{{ $category->id }}"
                          @if (old('category_id',$project->category->id) == $category->id) selected     
