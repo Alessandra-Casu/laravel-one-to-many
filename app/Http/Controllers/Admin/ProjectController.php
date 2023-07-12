@@ -116,6 +116,7 @@ class ProjectController extends Controller
          //aggiornare i dati nel db se validi
         
          $project->title       = $data['title'];
+         $project->type_id     = $data['type_id'];
          $project->category_id = $data['category_id'];
          $project->url_image   = $data['url_image'];
          $project->content     = $data['content'];

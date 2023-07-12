@@ -2,40 +2,36 @@
 
 @section('contents')
 
-    <h1>Projects</h1>
+    <h1>Types</h1>
 
-    @if (session('delete_success'))
+    {{-- @if (session('delete_success'))
         @php $project = session('delete_success') @endphp
         <div class="alert alert-danger">
             Il progetto "{{ $project->title }}" è stato eliminato per sempre
 
         </div>
-    @endif
+    @endif --}}
 
 
     <table class="table table-striped">
         <thead>
             <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Title</th>
-                <th scope="col">Type</th>
-                <th scope="col">Category</th>
-                <th scope="col">Image url</th>
+                <th scope="col">Name</th>
                 <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($projects as $project)
+            @foreach ($types as $type)
                 <tr>
-                    <th scope="row">{{ $project->id }}</th>
-                    <td>{{ $project->title }}</td>
-                    <td><a href="{{ route('admin.types.show', ['type' => $project->type]) }}">{{ $project->type->name }}</a></td>
-                    <td><a href="{{ route('admin.categories.show', ['category' => $project->category]) }}">{{ $project->category->name }}</a></td>
-                    <td>{{ $project->url_image }}</td>
+                    <th scope="row">{{ $type->id }}</th>
+                    <td>{{ $type->name }}</td>
+                   
+           
                     <td>
-                        <a class="btn btn-primary" href="{{ route('admin.projects.show', ['project' => $project]) }}">View</a>
-                        <a class="btn btn-warning" href="{{ route('admin.projects.edit', ['project' => $project]) }}">Edit</a>
-                        <button type="button" class="btn btn-danger js-delete" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{ $project->id }}">
+                        <a class="btn btn-primary" href="{{ route('admin.types.show', ['type' => $type]) }}">View</a>
+                        <a class="btn btn-warning" href="{{ route('admin.types.edit', ['type' => $type]) }}">Edit</a>
+                        <button type="button" class="btn btn-danger js-delete" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{ $type->id }}">
                             Delete
                         </button>
                     </td>
@@ -58,7 +54,7 @@
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
                     <form
                         action=""
-                        data-template="{{ route('admin.projects.destroy', ['project' => '*****']) }}"
+                        data-template="{{ route('admin.types.destroy', ['type' => '*****']) }}"
                         method="project"
                         class="d-inline-block"
                         id="confirm-delete"
@@ -72,6 +68,6 @@
         </div>
     </div>
 
-    {{ $projects->links() }}
+  
 
 @endsection
